@@ -10,106 +10,175 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="navbar">
-  <div class="logo">SANDEEP</div>
-  <div class="nav-links">
+<!-- NAVBAR -->
+<header class="nav">
+  <div class="nav-left">SANDEEP KUMAR</div>
+
+  <nav class="nav-center">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
     <a href="#contact">Contact</a>
-  </div>
-</nav>
+  </nav>
+
+  <a class="resume-btn" href="assets/resume.pdf" download>
+    ⬇ Resume
+  </a>
+</header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>
-      Turning <span>Complex Data</span><br>
-      Into <span>Leadership Decisions</span>
-    </h1>
-    <p>Data Analyst @ Amazon • SQL • Python • BI • KPI Design</p>
-    <a href="#projects" class="cta">Explore Work</a>
+  <p class="role">DATA ANALYST</p>
+
+  <h1>SANDEEP KUMAR</h1>
+
+  <p class="tagline">Transforming Data into Strategic Insights</p>
+
+  <div class="socials">
+    <a href="#">LinkedIn</a>
+    <span>|</span>
+    <a href="#">GitHub</a>
+    <span>|</span>
+    <a href="mailto:nagabathula98@gmail.com">Email</a>
   </div>
+
+  <button class="primary-btn" onclick="scrollToSection('projects')">
+    EXPLORE MY WORK ↓
+  </button>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="section">
-  <h2>About Me</h2>
-  <p class="about-text">
-    I’m a Data Analyst with 2+ years of experience at Amazon, focused on building
-    decision-grade analytics for leadership. I specialize in SQL-driven insights,
-    KPI design, and dashboards that transform raw operational data into
-    measurable business action.
+  <p class="section-label">ABOUT ME</p>
+  <h2>TURNING DATA INTO DECISIONS</h2>
+
+  <p class="section-desc">
+    Data Analyst with 2+ years of experience at Amazon, specializing in SQL-driven analysis,
+    KPI design, and dashboard development. Expert in transforming large-scale raw data from
+    Redshift and AWS S3 into actionable insights that drive business decisions.
   </p>
+
+  <div class="about-cards">
+    <div class="about-card">✔ 2+ years at Amazon as Business Intelligence Analyst</div>
+    <div class="about-card">✔ SQL, Python, Power BI, QuickSight, Redshift</div>
+    <div class="about-card">✔ Root cause analysis & performance tracking</div>
+    <div class="about-card">✔ Q3 Outstanding Performance – Amazon ROC</div>
+  </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="section dark">
-  <h2>Core Expertise</h2>
-  <div class="card-grid">
-    <div class="card">Advanced SQL<span>CTEs • Window Functions • Redshift</span></div>
-    <div class="card">Python Analytics<span>Pandas • NumPy • EDA</span></div>
-    <div class="card">Business Intelligence<span>Power BI • QuickSight • DAX</span></div>
-    <div class="card">Excel Automation<span>Power Query • Pivot Tables</span></div>
-    <div class="card">KPI Design<span>SLA • Throughput • Defects</span></div>
-    <div class="card">Stakeholder Communication<span>Executive Dashboards</span></div>
-  </div>
-</section>
+  <h2>SKILLS & EXPERTISE</h2>
 
-<!-- PROJECTS -->
-<section id="projects" class="section">
-  <h2>Featured Projects</h2>
-  <div class="project-grid">
-
-    <div class="project-card">
-      <h3>Healthcare Readmission Analysis</h3>
-      <p>Analyzed 100K+ hospital records to uncover drivers of patient readmissions.</p>
-      <span>Excel • Python • SQL • Power BI</span>
+  <div class="skill-grid">
+    <div class="skill-card">
+      <h3>Databases & SQL</h3>
+      <span>SQL</span><span>PostgreSQL</span><span>Redshift</span>
+      <span>CTEs</span><span>Window Functions</span>
     </div>
 
-    <div class="project-card">
-      <h3>Loan Default Risk Analysis</h3>
-      <p>Built credit risk KPIs and dashboards to monitor loan portfolio health.</p>
-      <span>SQL • Python • Power BI</span>
+    <div class="skill-card">
+      <h3>Programming & Analytics</h3>
+      <span>Python</span><span>Pandas</span><span>NumPy</span>
+      <span>Matplotlib</span><span>Seaborn</span>
     </div>
 
-    <div class="project-card">
-      <h3>Customer Risk & Revenue Analytics</h3>
-      <p>Designed an end-to-end SQL risk scoring framework using window functions.</p>
-      <span>Advanced SQL</span>
+    <div class="skill-card">
+      <h3>BI & Visualization</h3>
+      <span>Power BI</span><span>Tableau</span>
+      <span>QuickSight</span><span>DAX</span>
     </div>
-
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="section dark">
-  <h2>Experience</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3>Amazon — Business Intelligence Analyst</h3>
-      <span>Oct 2023 – Present</span>
-      <p>
-        Led SQL-driven analysis on large-scale Redshift datasets, standardized KPIs,
-        built leadership dashboards, validated metrics, and translated business
-        questions into executive-ready insights.
-      </p>
+<section id="experience" class="section">
+  <h2>WORK EXPERIENCE</h2>
+
+  <div class="experience-card">
+    <h3>Amazon</h3>
+    <p class="role-red">Business Intelligence Analyst</p>
+    <p class="meta">October 2023 – Present • Hyderabad, India</p>
+
+    <ul>
+      <li>Analyzed large-scale Redshift datasets to track SLA, throughput, and defect trends.</li>
+      <li>Built optimized SQL views using CTEs and window functions.</li>
+      <li>Developed leadership dashboards in Amazon QuickSight.</li>
+      <li>Validated metrics for executive reporting and decision-making.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section dark">
+  <p class="section-label">FEATURED WORK</p>
+  <h2>DATA ANALYTICS PROJECTS</h2>
+  <p class="section-desc">
+    Real-world analytics solutions delivering measurable business impact
+  </p>
+
+  <div class="project-grid">
+
+    <div class="project-card">
+      <img src="assets/project-healthcare.jpg" alt="">
+      <div class="project-overlay">
+        <h3>Healthcare Readmission Analysis</h3>
+        <p>100K+ hospital records • Risk drivers • BI dashboards</p>
+      </div>
     </div>
+
+    <div class="project-card">
+      <img src="assets/project-loan.jpg" alt="">
+      <div class="project-overlay">
+        <h3>Loan Default Risk Analysis</h3>
+        <p>Credit risk KPIs • Portfolio monitoring</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="assets/project-customer.jpg" alt="">
+      <div class="project-overlay">
+        <h3>Customer Risk & Revenue Analytics</h3>
+        <p>Advanced SQL • Risk scoring framework</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="section">
+  <h2>ACHIEVEMENTS & AWARDS</h2>
+
+  <div class="achievement-grid">
+    <div class="achievement-card">🏆 Certificate of Appreciation – Amazon ROC</div>
+    <div class="achievement-card">🏅 Certificate of Excellence – Amazon</div>
+    <div class="achievement-card">⭐ HackerRank Gold Badge – Python</div>
+    <div class="achievement-card">⭐ HackerRank Gold Badge – SQL</div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section">
-  <h2>Let’s Work Together</h2>
-  <p>Hyderabad, India</p>
-  <p>📧 nagabathula98@gmail.com</p>
-  <p>
-    <a href="https://www.linkedin.com/in/contact-sandeepkumar" target="_blank">LinkedIn</a> •
-    <a href="https://github.com/sandeepkumar951" target="_blank">GitHub</a>
+<section id="contact" class="section dark">
+  <h2>LET’S CONNECT</h2>
+  <p class="section-desc">
+    Interested in working together or have a question? Feel free to reach out.
   </p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>Contact Details</h3>
+      <p>📧 nagabathula98@gmail.com</p>
+      <p>📞 +91 9573404785</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>Download Resume</h3>
+      <a class="resume-btn" href="assets/resume.pdf" download>Download Resume</a>
+    </div>
+  </div>
 </section>
 
 <footer>© 2026 Sandeep Kumar</footer>
