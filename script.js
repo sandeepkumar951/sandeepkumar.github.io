@@ -1,5 +1,7 @@
-/* SMOOTH SCROLL */
-document.querySelectorAll('.nav-links a').forEach(link => {
+/* ===============================
+   SMOOTH SCROLL
+================================ */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     document.querySelector(link.getAttribute('href'))
@@ -7,39 +9,47 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-/* NAVBAR DARKEN */
-const nav = document.querySelector('.navbar');
+/* ===============================
+   NAVBAR STATE
+================================ */
+const nav = document.querySelector('.nav');
+
 window.addEventListener('scroll', () => {
-  nav.style.background = window.scrollY > 80
-    ? 'rgba(0,0,0,0.95)'
-    : 'rgba(0,0,0,0.6)';
+  nav.classList.toggle('nav-scrolled', window.scrollY > 80);
 });
 
-/* SCROLL REVEAL */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('show');
-  });
-}, { threshold: 0.15 });
+/* ===============================
+   SCROLL REVEAL
+================================ */
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
 
-document.querySelectorAll('.section, .card, .project-card')
+document.querySelectorAll('.section, .project-card, .skill-card')
   .forEach(el => {
-    el.classList.add('hidden');
+    el.classList.add('reveal');
     observer.observe(el);
   });
 
-/* 3D PROJECT TILT */
+/* ===============================
+   NETFLIX-STYLE PROJECT FOCUS
+================================ */
 document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rx = -(y - rect.height/2) / 18;
-    const ry = (x - rect.width/2) / 18;
-    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.05)`;
+  card.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.project-card')
+      .forEach(c => c !== card && c.classList.add('dim'));
   });
 
   card.addEventListener('mouseleave', () => {
-    card.style.transform = 'scale(1)';
+    document.querySelectorAll('.project-card')
+      .forEach(c => c.classList.remove('dim'));
   });
 });
