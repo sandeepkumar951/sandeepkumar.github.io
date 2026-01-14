@@ -1,964 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sandeep Kumar | Data Analyst</title>
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --netflix-black: #0a0a0a;
-            --netflix-dark: #141414;
-            --netflix-card: #1f1f1f;
-            --netflix-gray: #2a2a2a;
-            --netflix-light: #e5e5e5;
-            --netflix-red: #e50914;
-            --accent-blue: #0071eb;
-            --accent-green: #46d369;
-            --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-medium: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            --transition-fast: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --bg-black: #0a0a0a;
+            --bg-dark: #141414;
+            --card: #1f1f1f;
+            --gray: #2a2a2a;
+            --text: #e5e5e5;
+            --red: #e50914;
+            --green: #46d369;
+            --blue: #0071eb;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--netflix-black);
-            color: var(--netflix-light);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-black);
+            color: var(--text);
             line-height: 1.7;
-            overflow-x: hidden;
-            font-weight: 400;
         }
 
-        ::selection {
-            background-color: var(--netflix-red);
-            color: white;
-        }
+        a { color: inherit; text-decoration: none; }
 
-        /* Smooth Loading */
-        .page-transition {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Stagger Animation */
-        .stagger-item {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        /* Header */
+        /* ================= HEADER ================= */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 5%;
-            background: linear-gradient(
-                180deg, 
-                rgba(10, 10, 10, 0.95) 0%,
-                rgba(10, 10, 10, 0.8) 50%,
-                rgba(10, 10, 10, 0) 100%
-            );
-            backdrop-filter: blur(12px);
+            padding: 1.2rem 5%;
+            background: rgba(10,10,10,0.95);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: var(--transition-slow);
-            border-bottom: 1px solid transparent;
-        }
-
-        header.scrolled {
-            background: rgba(10, 10, 10, 0.98);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: var(--netflix-red);
-            text-decoration: none;
+            color: var(--red);
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: var(--transition-fast);
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo span {
-            color: white;
-            font-weight: 600;
         }
 
         nav ul {
-            display: flex;
             list-style: none;
-            gap: 2.5rem;
+            display: flex;
+            gap: 2rem;
         }
 
         nav a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition-fast);
-            position: relative;
-            padding: 5px 0;
+            opacity: 0.8;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--netflix-red);
-            transition: var(--transition-medium);
-        }
+        nav a:hover { opacity: 1; }
 
-        nav a:hover {
-            color: white;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* ================= HERO ================= */
         .hero {
             min-height: 100vh;
-            display: flex;
+            padding: 8rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
             align-items: center;
-            padding: 0 5%;
-            background: linear-gradient(
-                135deg,
-                rgba(10, 10, 10, 0.95) 0%,
-                rgba(20, 20, 20, 0.85) 100%
-            );
-            position: relative;
-            overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent 0%,
-                rgba(229, 9, 20, 0.03) 100%
-            );
-            z-index: 1;
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 2;
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-greeting {
+        .highlight {
+            background: rgba(229,9,20,0.12);
+            border-left: 4px solid var(--red);
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            color: var(--netflix-red);
+            padding: 1rem 2.4rem;
+            background: var(--red);
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            padding: 8px 16px;
-            background: rgba(229, 9, 20, 0.1);
-            border-radius: 50px;
-            border: 1px solid rgba(229, 9, 20, 0.2);
-            animation: wave 2s ease-in-out infinite;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            75% { transform: rotate(-10deg); }
-        }
-
-        .hero-title {
-            font-size: 3.8rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, #aaa 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            font-weight: 400;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .hero-highlight {
-            display: inline-block;
-            background: linear-gradient(120deg, rgba(229, 9, 20, 0.2) 0%, transparent 100%);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--netflix-red);
-            margin: 1.5rem 0;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 1.2rem 2.8rem;
-            background: linear-gradient(135deg, var(--netflix-red) 0%, #c11119 100%);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            transition: var(--transition-medium);
-            border: none;
-            cursor: pointer;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(229, 9, 20, 0.3);
-        }
-
-        /* Profile Image */
-        .profile-container {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-            opacity: 0;
-            animation: fadeInUp 0.8s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .profile-img {
-            width: 400px;
-            height: 500px;
-            border-radius: 20px;
+            width: 100%;
+            max-width: 360px;
+            height: 460px;
             object-fit: cover;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
-            transition: var(--transition-slow);
-            filter: grayscale(20%) contrast(110%);
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            margin: auto;
         }
 
-        .profile-img:hover {
-            transform: scale(1.02);
-            filter: grayscale(0%) contrast(100%);
-            box-shadow: 
-                0 35px 70px rgba(0, 0, 0, 0.6),
-                0 0 0 1px rgba(229, 9, 20, 0.2);
-        }
-
-        /* Sections */
-        .section {
+        /* ================= SECTIONS ================= */
+        section {
             padding: 6rem 5%;
-            position: relative;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .section-title {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--netflix-red), transparent);
-            border-radius: 2px;
-        }
-
-        /* Content Cards */
-        .content-card {
-            background: var(--netflix-card);
+        .card {
+            background: var(--card);
+            padding: 2.5rem;
             border-radius: 16px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--transition-medium);
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
         }
 
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(229, 9, 20, 0.02) 0%,
-                transparent 50%
-            );
-            z-index: 1;
-        }
-
-        .content-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(229, 9, 20, 0.2);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.3),
-                0 0 60px rgba(229, 9, 20, 0.05);
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .card-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .card-icon {
-            color: var(--netflix-red);
-            font-size: 1.8rem;
-        }
-
-        /* Tools Section */
-        .tools-grid {
+        /* ================= APPROACH ================= */
+        .principles {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
-        .tool-card {
-            background: var(--netflix-gray);
-            padding: 2.5rem;
+        .principle {
+            background: var(--gray);
+            padding: 1.8rem;
             border-radius: 12px;
-            transition: var(--transition-medium);
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
+            border-left: 4px solid var(--red);
         }
 
-        .tool-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--netflix-red);
-            background: rgba(31, 31, 31, 0.8);
-        }
-
-        .tool-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.05),
-                transparent
-            );
-            transition: 0.5s;
-        }
-
-        .tool-card:hover::after {
-            left: 100%;
-        }
-
-        /* Projects Section */
-        .projects-grid {
+        /* ================= TOOLS ================= */
+        .tools {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
 
-        .project-card {
-            background: var(--netflix-card);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: var(--transition-slow);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .tool {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 12px;
         }
 
-        .project-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: rgba(229, 9, 20, 0.3);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.4),
-                0 0 80px rgba(229, 9, 20, 0.1);
-        }
-
-        .project-header {
-            padding: 2.5rem 2.5rem 0;
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            color: var(--netflix-red);
-            margin-bottom: 1.5rem;
-        }
-
-        .project-content {
-            padding: 0 2.5rem 2.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .tag {
-            background: rgba(229, 9, 20, 0.15);
-            color: var(--netflix-red);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(229, 9, 20, 0.3);
-            transition: var(--transition-fast);
-        }
-
-        .tag:hover {
-            background: rgba(229, 9, 20, 0.25);
-            transform: scale(1.05);
-        }
-
-        /* Principles Section */
-        .principles-grid {
+        /* ================= PROJECTS ================= */
+        .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .principle-card {
-            background: linear-gradient(
-                135deg,
-                rgba(31, 31, 31, 0.8) 0%,
-                rgba(42, 42, 42, 0.8) 100%
-            );
-            padding: 2.5rem;
-            border-radius: 16px;
-            border-left: 4px solid var(--netflix-red);
-            transition: var(--transition-medium);
+        .project h3 {
+            margin-bottom: 1rem;
         }
 
-        .principle-card:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(
-                135deg,
-                rgba(31, 31, 31, 1) 0%,
-                rgba(42, 42, 42, 1) 100%
-            );
+        .project ul {
+            margin-left: 1.2rem;
+            opacity: 0.85;
         }
 
-        /* Contact Section */
-        .contact-info {
+        /* ================= CONTACT ================= */
+        .contact {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3rem;
-            margin-top: 3rem;
-            text-align: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
+            background: var(--card);
             padding: 2rem;
             border-radius: 16px;
-            background: rgba(31, 31, 31, 0.5);
-            transition: var(--transition-medium);
-            min-width: 250px;
+            min-width: 260px;
+            text-align: center;
         }
 
-        .contact-item:hover {
-            background: rgba(31, 31, 31, 0.8);
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(229, 9, 20, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--netflix-red);
-            transition: var(--transition-medium);
-        }
-
-        .contact-item:hover .contact-icon {
-            background: rgba(229, 9, 20, 0.2);
-            transform: scale(1.1);
-        }
-
-        /* Footer */
+        /* ================= FOOTER ================= */
         footer {
-            background: var(--netflix-dark);
+            background: var(--bg-dark);
             padding: 4rem 5%;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
 
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
+        footer p {
+            opacity: 0.7;
         }
 
-        .footer-quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2rem;
-            padding: 0 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition-fast);
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            color: var(--netflix-red);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .profile-container {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                margin: 3rem auto;
-                text-align: center;
-            }
-
-            .profile-img {
-                width: 300px;
-                height: 400px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .section-title {
-                font-size: 2.3rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 900px) {
             .hero {
-                text-align: center;
-                padding: 8rem 5% 4rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .profile-img {
-                width: 250px;
-                height: 350px;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-
-            .content-card, .tool-card, .project-card, .principle-card {
-                padding: 2rem;
-            }
-
-            .projects-grid {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
         }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 4rem 5%;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .cta-button {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-        }
-
-        /* Animation Classes */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Stagger Delay Classes */
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s; }
     </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header id="header">
-        <a href="#" class="logo">
-            <i class="fas fa-chart-line"></i>
-            <span>Sandeep</span>
+
+<header>
+    <div class="logo">
+        <i class="fas fa-chart-line"></i> Sandeep
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Connect</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+    <div>
+        <h1>Data at the Intersection of Operations & Decisions</h1>
+        <p>
+            I don’t just analyze data — I understand how it flows through systems,
+            where it breaks, and how wrong metrics lead to wrong decisions.
+        </p>
+
+        <div class="highlight">
+            I enjoy problems where the data is messy, the question is unclear,
+            and the answer must be explained — not just calculated.
+        </div>
+
+        <a href="#work" class="cta">
+            Explore My Work <i class="fas fa-arrow-down"></i>
         </a>
-        
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#approach">Approach</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#principles">Principles</a></li>
-                <li><a href="#contact">Connect</a></li>
-            </ul>
-        </nav>
-        
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </header>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero page-transition">
-        <div class="hero-content">
-            <div class="hero-greeting">
-                <i class="fas fa-hand-sparkles"></i>
-                👋 Hello, I'm Sandeep
+    <img src="photo (1).jpg" alt="Sandeep Kumar" class="profile-img">
+</section>
+
+<!-- ================= APPROACH ================= -->
+<section id="approach">
+    <h2 class="section-title">🧠 How I Think About Analytics</h2>
+
+    <div class="card">
+        <p>
+            I approach analytics like an investigation. Before touching SQL or
+            dashboards, I focus on the decision being made and the signals that
+            truly reflect performance.
+        </p>
+
+        <div class="principles">
+            <div class="principle">
+                <strong>What decision is being made?</strong>
+                <p>Analytics exists to support action, not curiosity.</p>
             </div>
-            
-            <h1 class="hero-title">Data at the Intersection of Operations, Decisions & Analytics</h1>
-            
-            <p class="hero-subtitle">
-                My strength is not just writing queries or building dashboards — it's understanding how data flows through a system, spotting what actually matters, and converting that into insights leaders can act on.
+
+            <div class="principle">
+                <strong>What metric actually matters?</strong>
+                <p>Not all numbers deserve to be tracked.</p>
+            </div>
+
+            <div class="principle">
+                <strong>Where can this mislead?</strong>
+                <p>Bad metrics are worse than no metrics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= TOOLS ================= -->
+<section id="tools">
+    <h2 class="section-title">🛠 Analytics Toolbox</h2>
+
+    <div class="tools">
+        <div class="tool">
+            <h3>SQL</h3>
+            <p>Metric definition, aggregation logic, performance tuning.</p>
+        </div>
+
+        <div class="tool">
+            <h3>Excel</h3>
+            <p>Fast validation, edge cases, exploratory analysis.</p>
+        </div>
+
+        <div class="tool">
+            <h3>Power BI / QuickSight</h3>
+            <p>Dashboards that executives can trust.</p>
+        </div>
+
+        <div class="tool">
+            <h3>Python</h3>
+            <p>Behavior analysis, anomaly detection, automation.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+    <h2 class="section-title">📊 Selected Work</h2>
+
+    <div class="projects">
+        <div class="card project">
+            <h3>Operational Performance Analytics</h3>
+            <p>
+                Analyzing large operational datasets where small metric errors
+                can cascade into wrong decisions.
             </p>
-            
-            <div class="hero-highlight">
-                <i class="fas fa-bullseye"></i>
-                I enjoy working on problems where the data is messy, the question is unclear, and the answer needs to be explained, not just calculated.
-            </div>
-            
-            <a href="#work" class="cta-button">
-                Explore My Work
-                <i class="fas fa-arrow-down"></i>
-            </a>
+            <ul>
+                <li>Separated volume vs performance effects</li>
+                <li>Designed comparable KPIs across teams</li>
+                <li>Reduced metric mismatch discussions</li>
+            </ul>
         </div>
-        
-        <div class="profile-container">
-            <img src="photo (1).jpg" alt="Sandeep Kumar - Data Analyst" class="profile-img">
-        </div>
-    </section>
 
-    <!-- Approach Section -->
-    <section id="approach" class="section animate-on-scroll">
-        <div class="container">
-            <h2 class="section-title">🧠 What I Do (Beyond Tools)</h2>
-            
-            <div class="content-card animate-on-scroll delay-1">
-                <div class="card-content">
-                    <h3 class="card-title">
-                        <i class="fas fa-search card-icon"></i>
-                        Investigative Analytics Approach
-                    </h3>
-                    <p>I approach analytics like an investigation, starting with the fundamental questions that drive business value.</p>
-                    
-                    <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-                        <div class="principle-card animate-on-scroll delay-2">
-                            <h4 style="color: var(--netflix-red); margin-bottom: 1rem;">What decision is being made?</h4>
-                            <p style="font-size: 0.95rem;">Identifying the actual business decision that needs data support</p>
-                        </div>
-                        
-                        <div class="principle-card animate-on-scroll delay-3">
-                            <h4 style="color: var(--netflix-red); margin-bottom: 1rem;">What signal reflects performance?</h4>
-                            <p style="font-size: 0.95rem;">Separating meaningful signals from noise in complex datasets</p>
-                        </div>
-                        
-                        <div class="principle-card animate-on-scroll delay-4">
-                            <h4 style="color: var(--netflix-red); margin-bottom: 1rem;">Where can data mislead?</h4>
-                            <p style="font-size: 0.95rem;">Anticipating and preventing misinterpretation through correct modeling</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-card animate-on-scroll delay-2">
-                <div class="card-content">
-                    <h3 class="card-title">
-                        <i class="fas fa-bullseye card-icon"></i>
-                        Core Focus Areas
-                    </h3>
-                    
-                    <div style="margin-top: 1.5rem;">
-                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                            <i class="fas fa-chart-line" style="color: var(--accent-green); margin-top: 5px;"></i>
-                            <div>
-                                <h4 style="margin-bottom: 0.5rem; color: white;">Designing meaningful KPIs</h4>
-                                <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">Creating metrics that accurately reflect business performance and drive actionable insights</p>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                            <i class="fas fa-check-double" style="color: var(--accent-green); margin-top: 5px;"></i>
-                            <div>
-                                <h4 style="margin-bottom: 0.5rem; color: white;">Validating numbers across sources</h4>
-                                <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">Ensuring consistency and reliability by cross-verifying data from multiple systems</p>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; align-items: start; gap: 1rem;">
-                            <i class="fas fa-presentation" style="color: var(--accent-green); margin-top: 5px;"></i>
-                            <div>
-                                <h4 style="margin-bottom: 0.5rem; color: white;">Standing up in reviews</h4>
-                                <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">Building insights that withstand executive scrutiny and facilitate decision-making</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="card project">
+            <h3>Customer & Risk Analytics</h3>
+            <p>
+                Uncovering hidden risk signals in noisy, non-obvious datasets.
+            </p>
+            <ul>
+                <li>Detected abnormal behavior patterns</li>
+                <li>Reduced false positives in risk metrics</li>
+                <li>Improved dashboard trust</li>
+            </ul>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="section animate-on-scroll" style="background: var(--netflix-dark);">
-        <div class="container">
-            <h2 class="section-title">🛠 My Analytics Toolbox</h2>
-            
-            <div class="content-card animate-on-scroll delay-1">
-                <div class="card-content">
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9);">
-                        Instead of listing tools, here's how I use them — each with a specific purpose, avoiding the "wrong hammer for the nail."
-                    </p>
-                    
-                    <div class="tools-grid">
-                        <div class="tool-card animate-on-scroll delay-2">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div style="width: 50px; height: 50px; background: rgba(229, 9, 20, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-database" style="color: var(--netflix-red); font-size: 1.5rem;"></i>
-                                </div>
-                                <h3 style="font-size: 1.4rem; color: white;">SQL</h3>
-                            </div>
-                            <p>Build reliable datasets, define metrics once, avoid rework through modular query design and optimization.</p>
-                        </div>
-                        
-                        <div class="tool-card animate-on-scroll delay-3">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div style="width: 50px; height: 50px; background: rgba(229, 9, 20, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-file-excel" style="color: var(--netflix-red); font-size: 1.5rem;"></i>
-                                </div>
-                                <h3 style="font-size: 1.4rem; color: white;">Excel</h3>
-                            </div>
-                            <p>Fast validation, edge-case checks, exploratory analysis, and rapid prototyping of analytical approaches.</p>
-                        </div>
-                        
-                        <div class="tool-card animate-on-scroll delay-4">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div style="width: 50px; height: 50px; background: rgba(229, 9, 20, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-chart-bar" style="color: var(--netflix-red); font-size: 1.5rem;"></i>
-                                </div>
-                                <h3 style="font-size: 1.4rem; color: white;">Power BI / QuickSight</h3>
-                            </div>
-                            <p>Translate metrics into patterns leaders can see — interactive dashboards that tell clear stories.</p>
-                        </div>
-                        
-                        <div class="tool-card animate-on-scroll delay-5">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div style="width: 50px; height: 50px; background: rgba(229, 9, 20, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fab fa-python" style="color: var(--netflix-red); font-size: 1.5rem;"></i>
-                                </div>
-                                <h3 style="font-size: 1.4rem; color: white;">Python</h3>
-                            </div>
-                            <p>Explore behavior, trends, and anomalies at scale — from data cleaning to advanced statistical analysis.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+    <h2 class="section-title">🤝 Let’s Connect</h2>
+
+    <div class="contact">
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>your.email@example.com</p>
         </div>
-    </section>
 
-    <!-- Work Section -->
-    <section id="work" class="section animate-on-scroll">
-        <div class="container">
-            <h2 class="section-title">📊 Selected Work</h2>
-            
-            <div class="projects-grid">
-                <div class="project-card animate-on-scroll delay-1">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-tachometer-alt"></i>
-                        </div>
-                        <h3 style="font-size: 1.6rem; color: white; margin-bottom: 1rem;">Operational Performance Analysis</h3>
-                    </div>
-                    
-                    <div class="project-content">
-                        <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem;">
-                            Working with large operational datasets where small metric errors can lead to wrong decisions.
-                        </p>
-                        
-                        <div style="margin-bottom: 1.5rem;">
-                            <h4 style="color: var(--netflix-red); margin-bottom: 1rem;">What I focused on:</h4>
-                            <ul style="padding-left: 1.5rem; color: rgba(255, 255, 255, 0.8);">
-                                <li>Identifying leading vs lagging indicators</li>
-                                <li>Separating volume effects from performance effects</li>
-                                <li>Making KPIs comparable across time and teams</li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h4 style="color: var(--accent-green); margin-bottom: 1rem;">Impact:</h4>
-                            <ul style="padding-left: 1.5rem; color: rgba(255, 255, 255, 0.8);">
-                                <li>Clear visibility into trend deviations</li>
-                                <li>Faster root-cause discussions</li>
-                                <li>Fewer "number mismatch" debates</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animate-on-scroll delay-2">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-user-shield"></i>
-                        </div>
-                        <h3 style="font-size: 1.6rem; color: white; margin-bottom: 1rem;">Customer & Risk Analytics</h3>
-                    </div>
-                    
-                    <div class="project-content">
-                        <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem;">
-                            Problems where patterns are not obvious — exploring hidden
+        <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <p>linkedin.com/in/sandeepkumar</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>
+        “Good analytics doesn’t just answer questions — it prevents the wrong ones.”
+    </p>
+    <p>© 2026 Sandeep Kumar</p>
+</footer>
+
+</body>
+</html>
